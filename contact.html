@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Booking | Lesotho Tourism</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: midnightblue;
+            --accent-color: firebrick;
+            --transition-speed: 0.3s ease;
+            --border-radius-base: 0.5rem;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+        .custom-btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid var(--primary-color);
+            border-radius: var(--border-radius-base);
+            transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+        .custom-btn-primary:hover {
+            background-color: darkblue;
+            border-color: darkblue;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 128, 0.3);
+        }
+        .card {
+            border-radius: var(--border-radius-base);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.15)!important;
+        }
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+        [data-bs-theme="dark"] {
+            background-color: black;
+            color: lightgray;
+        }
+        [data-bs-theme="dark"] .card {
+            background-color: darkslategray;
+            color: lightgray;
+            border: 1px solid dimgray;
+        }
+        [data-bs-theme="dark"] .bg-light {
+            background-color: darkslateblue !important;
+            color: lightgray !important;
+        }
+    </style>
+</head>
+<body data-bs-theme="light">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" aria-label="Main Navigation">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">Lesotho Tourism</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto me-3">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="leteba.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="destinations.html">Destinations</a></li>
+                        <li class="nav-item"><a class="nav-link" href="exinia.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="contact.html">Contact</a></li>
+                    </ul>
+                    <button class="btn btn-outline-light btn-sm" id="themeToggleBtn" aria-label="Toggle Dark Mode">Toggle Dark Mode</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <div class="row g-5">
+            <div class="col-md-6">
+                <div class="card p-4 shadow-sm border-0 h-100">
+                    <h1 class="h4 mb-3">Trip Booking Calculator</h1>
+                    <form id="bookingCalcForm">
+                        <div class="mb-3">
+                            <label for="calcGuests" class="form-label">Number of Visitors</label>
+                            <input type="number" id="calcGuests" class="form-control" min="1" value="1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="calcDays" class="form-label">Number of Nights</label>
+                            <input type="number" id="calcDays" class="form-control" min="1" value="1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="calcActivity" class="form-label">Select Guided Activity</label>
+                            <select id="calcActivity" class="form-select">
+                                <option value="0">None</option>
+                                <option value="350">Pony Trekking (M350/person)</option>
+                                <option value="600">Maletsunyane Abseil (M600/person)</option>
+                                <option value="250">Cultural Village Tour (M250/person)</option>
+                            </select>
+                        </div>
+                        <div class="p-3 bg-light rounded text-center my-3">
+                            <span class="text-muted">Estimated Total Cost:</span>
+                            <div class="h3 text-success mb-0" id="calcTotal">M500</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card p-4 shadow-sm border-0 h-100">
+                    <h1 class="h4 mb-3">Send Us a Message</h1>
+                    
+                    <div id="contactSuccessAlert" class="alert alert-success d-none" role="alert">
+                        Thank you! Your message has been sent successfully.
+                    </div>
+
+                    <form id="contactForm" novalidate>
+                        <div class="mb-3">
+                            <label for="contactName" class="form-label">Full Name</label>
+                            <input type="text" id="contactName" class="form-control" required>
+                            <div class="invalid-feedback">Please enter your name.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactEmail" class="form-label">Email Address</label>
+                            <input type="email" id="contactEmail" class="form-control" required>
+                            <div class="invalid-feedback">Please enter a valid email address.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactMessage" class="form-label">Message</label>
+                            <textarea id="contactMessage" class="form-control" rows="4" required></textarea>
+                            <div class="invalid-feedback">Please write a message.</div>
+                        </div>
+                        <button type="submit" class="btn custom-btn-primary w-100">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Lesotho Tourism Board.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

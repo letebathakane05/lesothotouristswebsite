@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Lesotho | Kingdom in the Sky</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: midnightblue;
+            --accent-color: firebrick;
+            --transition-speed: 0.3s ease;
+            --border-radius-base: 0.5rem;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+        .custom-btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid var(--primary-color);
+            border-radius: var(--border-radius-base);
+            transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+        .custom-btn-primary:hover {
+            background-color: darkblue;
+            border-color: darkblue;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 128, 0.3);
+        }
+        .card {
+            border-radius: var(--border-radius-base);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.15)!important;
+        }
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+        [data-bs-theme="dark"] {
+            background-color: black;
+            color: lightgray;
+        }
+        [data-bs-theme="dark"] .card {
+            background-color: darkslategray;
+            color: lightgray;
+            border: 1px solid dimgray;
+        }
+        [data-bs-theme="dark"] .table {
+            color: lightgray;
+        }
+        [data-bs-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd) {
+            background-color: darkslategray;
+            color: lightgray;
+        }
+    </style>
+</head>
+<body data-bs-theme="light">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" aria-label="Main Navigation">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">Lesotho Tourism</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto me-3">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="leteba.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="destinations.html">Destinations</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                    <button class="btn btn-outline-light btn-sm" id="themeToggleBtn" aria-label="Toggle Dark Mode">Toggle Dark Mode</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <section class="row align-items-center mb-5">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <h1 class="display-5 fw-bold mb-3">About the Kingdom of Lesotho</h1>
+                <p>Lesotho is a high-altitude, landlocked country encircled by South Africa. Known for its breathtaking mountain passes, rivers, and rich Basotho culture, it is the only independent state in the world that lies entirely above 1,000 meters in elevation.</p>
+                <p>From the iconic Mokorotlo hat to traditional pony trekking across rugged trails, Lesotho offers tourists an authentic African alpine experience.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="landscape.jpg" alt="Scenic mountainous landscape of Lesotho" class="img-fluid rounded shadow">
+            </div>
+        </section>
+
+        <section class="my-5">
+            <h2 class="mb-3">Quick Country Facts</h2>
+            <div class="table-responsive shadow-sm">
+                <table class="table table-striped table-hover border align-middle mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Fact Key</th>
+                            <th scope="col">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Capital</td><td>Maseru[cite: 3]</td></tr>
+                        <tr><td>Official Languages</td><td>Sesotho, English[cite: 3]</td></tr>
+                        <tr><td>Lowest Elevation</td><td>1,400 meters (4,593 ft)[cite: 3]</td></tr>
+                        <tr><td>Currency</td><td>Lesotho Loti (LSL) / South African Rand (ZAR)[cite: 3]</td></tr>
+                        <tr><td>Key Attractions</td><td>Maletsunyane Falls, Katse Dam, Tse'hlanyane National Park[cite: 3]</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Lesotho Tourism Board.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

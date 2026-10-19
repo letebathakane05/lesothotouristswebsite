@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery | Lesotho Tourism</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: midnightblue;
+            --accent-color: firebrick;
+            --transition-speed: 0.3s ease;
+            --border-radius-base: 0.5rem;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+        .custom-btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid var(--primary-color);
+            border-radius: var(--border-radius-base);
+            transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+        .custom-btn-primary:hover {
+            background-color: darkblue;
+            border-color: darkblue;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 128, 0.3);
+        }
+        .card {
+            border-radius: var(--border-radius-base);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.15)!important;
+        }
+        .gallery-img {
+            height: 240px;
+            object-fit: cover;
+            width: 100%;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+        .gallery-img:hover {
+            transform: scale(1.02);
+        }
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+        [data-bs-theme="dark"] {
+            background-color: black;
+            color: lightgray;
+        }
+        [data-bs-theme="dark"] .card {
+            background-color: darkslategray;
+            color: lightgray;
+            border: 1px solid dimgray;
+        }
+        [data-bs-theme="dark"] .modal-content {
+            background-color: darkslategray;
+            color: lightgray;
+            border: 1px solid dimgray;
+        }
+    </style>
+</head>
+<body data-bs-theme="light">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" aria-label="Main Navigation">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">Lesotho Tourism</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto me-3">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="leteba.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="destinations.html">Destinations</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="exinia.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                    <button class="btn btn-outline-light btn-sm" id="themeToggleBtn" aria-label="Toggle Dark Mode">Toggle Dark Mode</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <h1 class="text-center mb-4">Photo Gallery</h1>
+        <p class="text-center text-muted mb-5">Click on any image to preview in high-resolution.</p>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="mmaletsunyane.jpg" 
+                         class="card-img-top img-fluid rounded-top gallery-img" 
+                         alt="Maletsunyane Waterfall" 
+                         tabindex="0"
+                         onclick="openGalleryModal(this.src, 'Maletsunyane Waterfall')"
+                         onkeypress="if(event.key==='Enter') openGalleryModal(this.src, 'Maletsunyane Waterfall')">
+                    <div class="card-body text-center d-flex flex-column justify-content-between">
+                        <h2 class="card-title fs-6 fw-bold mb-1">Maletsunyane Waterfall</h2>
+                        <p class="card-text text-muted small mb-0">A stunning view of the magnificent waterfall plunging into the gorge.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="maletsunyane.jpg" 
+                         class="card-img-top img-fluid rounded-top gallery-img" 
+                         alt="Maletsunyane Falls Viewpoint" 
+                         tabindex="0"
+                         onclick="openGalleryModal(this.src, 'Maletsunyane Falls Viewpoint')"
+                         onkeypress="if(event.key==='Enter') openGalleryModal(this.src, 'Maletsunyane Falls Viewpoint')">
+                    <div class="card-body text-center d-flex flex-column justify-content-between">
+                        <h2 class="card-title fs-6 fw-bold mb-1">Maletsunyane Falls Viewpoint</h2>
+                        <p class="card-text text-muted small mb-0">Visitors enjoying the scenic lookout draped in traditional Basotho blankets.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="hiking.jpg" 
+                         class="card-img-top img-fluid rounded-top gallery-img" 
+                         alt="Pony Trekking & Hiking" 
+                         tabindex="0"
+                         onclick="openGalleryModal(this.src, 'Pony Trekking & Hiking')"
+                         onkeypress="if(event.key==='Enter') openGalleryModal(this.src, 'Pony Trekking & Hiking')">
+                    <div class="card-body text-center d-flex flex-column justify-content-between">
+                        <h2 class="card-title fs-6 fw-bold mb-1">Pony Trekking & Hiking</h2>
+                        <p class="card-text text-muted small mb-0">Exploring the lush green highlands and mountain trails on horseback.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="katse.jpg" 
+                         class="card-img-top img-fluid rounded-top gallery-img" 
+                         alt="Katse Dam Overview" 
+                         tabindex="0"
+                         onclick="openGalleryModal(this.src, 'Katse Dam Overview')"
+                         onkeypress="if(event.key==='Enter') openGalleryModal(this.src, 'Katse Dam Overview')">
+                    <div class="card-body text-center d-flex flex-column justify-content-between">
+                        <h2 class="card-title fs-6 fw-bold mb-1">Katse Dam Overview</h2>
+                        <p class="card-text text-muted small mb-0">Aerial perspective of Africa's remarkable architectural engineering marvel.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="katse highlands.jpg" 
+                         class="card-img-top img-fluid rounded-top gallery-img" 
+                         alt="Katse Dam Structure" 
+                         tabindex="0"
+                         onclick="openGalleryModal(this.src, 'Katse Dam Structure')"
+                         onkeypress="if(event.key==='Enter') openGalleryModal(this.src, 'Katse Dam Structure')">
+                    <div class="card-body text-center d-flex flex-column justify-content-between">
+                        <h2 class="card-title fs-6 fw-bold mb-1">Katse Dam Structure</h2>
+                        <p class="card-text text-muted small mb-0">Detailed view of the massive wall release amidst winding mountain passes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="cultural.jpg" 
+                         class="card-img-top img-fluid rounded-top gallery-img" 
+                         alt="Basotho Cultural Village" 
+                         tabindex="0"
+                         onclick="openGalleryModal(this.src, 'Basotho Cultural Village')"
+                         onkeypress="if(event.key==='Enter') openGalleryModal(this.src, 'Basotho Cultural Village')">
+                    <div class="card-body text-center d-flex flex-column justify-content-between">
+                        <h2 class="card-title fs-6 fw-bold mb-1">Basotho Cultural Village</h2>
+                        <p class="card-text text-muted small mb-0">Traditional thatched-roof rondavels nestled in the breathtaking mountain valley.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title fs-5" id="galleryModalTitle">Image Preview</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="" id="galleryModalImage" class="img-fluid rounded" alt="Enlarged preview">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Lesotho Tourism Board.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
